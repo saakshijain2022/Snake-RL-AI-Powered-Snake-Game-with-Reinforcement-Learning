@@ -1,0 +1,103 @@
+digraph {
+	SG [label=SnakeGameAI]
+	A [label=Agent]
+	LQ [label=Linear_QNet]
+	QT [label=QTrainer]
+	SGA [label="Attributes:
+- w
+- h
+- display
+- clock
+- direction
+- head
+- snake
+- score
+- food
+- frame_iteration" shape=box]
+	AA [label="Attributes:
+- n_games
+- epsilon
+- gamma
+- memory
+- model
+- trainer" shape=box]
+	LQA [label="Attributes:
+- linear1
+- linear2" shape=box]
+	QTA [label="Attributes:
+- lr
+- gamma
+- model
+- optimizer
+- criterion" shape=box]
+	SGM [label="Methods:
+- reset()
+- _place_food()
+- play_step(action)
+- is_collision(pt)
+- _update_ui()
+- _move(action)" shape=box]
+	AM [label="Methods:
+- get_state(game)
+- remember(state, action, reward, next_state, done)
+- train_long_memory()
+- train_short_memory()
+- get_action(state)" shape=box]
+	LQM [label="Methods:
+- forward(x)
+- save(file_name)" shape=box]
+	QTM [label="Methods:
+- train_step(state, action, reward, next_state, done)" shape=box]
+	A -> SG [label="interacts with"]
+	A -> LQ [label=uses]
+	QT -> LQ [label=trains]
+	SG [label="SnakeGameAI
+Attributes:
+- w
+- h
+- display
+- clock
+- direction
+- head
+- snake
+- score
+- food
+- frame_iteration
+Methods:
+- reset()
+- _place_food()
+- play_step(action)
+- is_collision(pt)
+- _update_ui()
+- _move(action)" shape=rect]
+	A [label="Agent
+Attributes:
+- n_games
+- epsilon
+- gamma
+- memory
+- model
+- trainer
+Methods:
+- get_state(game)
+- remember(state, action, reward, next_state, done)
+- train_long_memory()
+- train_short_memory()
+- get_action(state)" shape=rect]
+	LQ [label="Linear_QNet
+Attributes:
+- linear1
+- linear2
+Methods:
+- forward(x)
+- save(file_name)" shape=rect]
+	QT [label="QTrainer
+Attributes:
+- lr
+- gamma
+- model
+- optimizer
+- criterion
+Methods:
+- train_step(state, action, reward, next_state, done)" shape=rect]
+}
